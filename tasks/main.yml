@@ -1,7 +1,21 @@
 ---
 # tasks file for install-k8s-master-node
 
-- name: Init the cluster 
+- name: Copy kube-config for init
+  become: yes
+  copy:
+    src: kube-config.yaml
+    dest: /opt/kubec-config.yaml
+
+- name: Init the cluster
+  become: yes
   shell: |
     kubeadm init --apiserver-advertise-address {{ MASTER_IP }} \
-                 --pod-network-cidr {{ POD_NETWORK_CIDR }}
+                 --pod-network-cidr {{ POD_NETWORK_CIDR }} \
+                 --config /opt/kubec-config.yaml
+
+- name: Clean kube-config after init
+  become: yes
+  file:
+    state: absent
+    dest: /opt/kubec-config.yaml

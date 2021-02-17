@@ -1,4 +1,5 @@
 ---
 # vars file for install-k8s-master-node
+CGROUP_DRIVER: pod
 POD_NETWORK_CIDR: 10.244.0.0/16
 MASTER_IP: nil
