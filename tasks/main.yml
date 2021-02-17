@@ -10,9 +10,7 @@
 - name: Init the cluster
   become: yes
   shell: |
-    kubeadm init --apiserver-advertise-address {{ MASTER_IP }} \
-                 --pod-network-cidr {{ POD_NETWORK_CIDR }} \
-                 --config /opt/kubec-config.yaml
+    kubeadm init --config /opt/kubec-config.yaml
 
 - name: Clean kube-config after init
   become: yes
