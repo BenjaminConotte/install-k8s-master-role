@@ -1,0 +1,7 @@
+---
+# tasks file for install-k8s-master-node
+
+- name: Init the cluster 
+  shell: |
+    kubeadm init --apiserver-advertise-address {{ MASTER_IP }} \
+                 --pod-network-cidr {{ POD_NETWORK_CIDR }}

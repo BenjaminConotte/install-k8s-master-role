@@ -1,0 +1,4 @@
+---
+# vars file for install-k8s-master-node
+POD_NETWORK_CIDR: 10.244.0.0/16
+MASTER_IP: nil
