@@ -3,7 +3,7 @@
 
 - name: Copy kube-config for init
   become: yes
-  copy:
+  template:
     src: kube-config.yaml
     dest: /opt/kubec-config.yaml
 
