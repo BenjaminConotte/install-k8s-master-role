@@ -7,6 +7,11 @@
     src: kube-config.yaml
     dest: /opt/kubec-config.yaml
 
+- name: Clean install
+  become: yes
+  shell: |
+    kubeadm reset -f
+
 - name: Init the cluster
   become: yes
   shell: |
